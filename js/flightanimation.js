@@ -84,7 +84,8 @@ $(function() {
 
     function delta(plane, path) {
         var l = path.getTotalLength();
-        return function() {
+        var plane = plane;
+        return function(i) {
             return function(t) {
                 var p = path.getPointAtLength(t * l);
 
@@ -115,7 +116,7 @@ $(function() {
         transition(plane, route);
     }
 
-    function loaded(countries, airports) {
+    function loaded(error, countries, airports) {
         svg.append("g")
             .attr("class", "countries")
             .selectAll("path")
